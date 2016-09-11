@@ -1,5 +1,7 @@
 package com.test.demo1.web;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,12 +16,14 @@ import com.test.demo1.service.IUserService;
 
 @Controller
 public class UserController {
+	 static Logger logger = LogManager.getLogger(UserController.class.getName());
 	@Autowired
 	private IUserService userService;
 	@Autowired
 	private UserDao userDao;
 	@RequestMapping("/add")
 	public ModelAndView one() {
+		logger.info("this is a book");
 		ModelAndView model = new ModelAndView("show");
 		User user = new User();
 		user.setAge(1);
